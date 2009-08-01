@@ -16,9 +16,9 @@
 	boolean sat_prog = false; // should saturation progress thru loop?
 	boolean bri_prog = false; // should brightness progress thru loop?
 
-	int hue_range_start = 1;
-	int hue_range_end = 4;
-	int rotation_factor = 90;
+	int hue_range_start = 2;
+	int hue_range_end = 3;
+	int rotation_factor = 60;
 	
 	int rotation_limit = 1000;
 	
@@ -58,7 +58,7 @@
 
 		fill(h, s, b);
 		rotate(PI/rotation_factor);
-		rect(-100, -100, 2000, i);
+		rect(0, 0, 500, 20);
 	}
 </script>
 

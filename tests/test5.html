@@ -5,9 +5,23 @@
   <script src="../init.js"></script>
 <body>
 	<script type="application/processing">
-		
-	</script>
+		float x, y;
+		float val, sd, mean; 
+		size(320, 240);
+		stroke(255);
+		background(100);
+		x = 0; y = height;
+		range = width;
+		sd = height; // Standard Deviation - Omega
+		mean = (range / sd); // Mean - Sigma
 
+		for(x = 0; x < range; x++) {
+			val = ((x*PI) - mean) / (range);  
+			point(x, val);
+		}
+	</script>
+	
+	
 	<canvas width="200" height="200"></canvas>
 </body>
 </html>
