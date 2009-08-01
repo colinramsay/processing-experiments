@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../processing.js"></script>
+  <script src="../init.js"></script>
+<body>
+
+<script type="application/processing">
+
+	cWidth = 700;
+	cHeight = 700;	
+	size(cWidth, cHeight);
+	frameRate(30);
+	colorMode(RGB,255,255,255,100);
+	smooth();
+	background(30);
+	stroke(200);
+
+	for(int i = 0; i <= 10; i++) {
+		int x = int(random(0, cWidth));
+		int y = int(random(0, cHeight));
+		int h = int(random(4, cHeight / 10));
+		int w = int(random(4, cWidth / 8));
+		fill(random(0, 255), random(0, 255), random(0, 255), random(100, 255))
+		rect(x, y, h, w);
+	}
+
+</script>
+
+<canvas width="200" height="200"></canvas>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../processing.js"></script>
+  <script src="../init.js"></script>
+<body>
+
+<script type="application/processing">
+
+	function shouldStartNewSnake() {
+		
+		console.debug(snakeSize, minSnakeSize, maxSnakeSize);
+		
+		if(snakeSize === maxSnakeSize) return true;
+		if(snakeSize < minSnakeSize) return false;
+		
+		int rtn =  int(random(0,2));
+
+		return rtn === 1;
+	}
+
+	cWidth = 700;
+	cHeight = 700;	
+	size(cWidth, cHeight);
+	frameRate(30);
+	colorMode(RGB,255,255,255,100);
+	smooth();
+	background(30);
+	noStroke();
+
+	int minSnakeSize = 7;
+	int maxSnakeSize = 20;
+	int snakeSize = 0;
+	int blobWidth = 10;
+	int blobHeight = 10;
+
+	int x = int(random(0, cWidth));
+	int y = int(random(0, cHeight));
+
+	// directions =
+	//       0
+	//      | 
+	//   3----1
+	//     |
+	//     2
+
+	int lastDir;
+
+	for(int i = 0; i <= 50; i++) {
+		
+		// start new snake?
+		if(shouldStartNewSnake()) {
+			x = int(random(0, cWidth));
+			y = int(random(0, cHeight));
+			snakeSize = 0;
+		}
+
+		rect(x, y, blobWidth, blobHeight);
+		snakeSize++
+		
+		int dir = int(random(0, 3));
+		
+		while(abs(dir -lastDir) === 2) dir = int(random(0, 3));
+		
+		switch(dir){
+			case 0:
+				y = y - (blobWidth + 1);
+				break;
+			case 1:
+				x = x + (blobWidth + 1);
+				break;
+			case 2:
+				y = y + (blobWidth + 1);
+				break;
+			case 3:
+				x = x - (blobWidth + 1);
+				break;
+			default:
+		}
+		
+		lastDir = dir;
+			
+		
+	}
+
+
+
+</script>
+
+<canvas width="200" height="200"></canvas>
+
+</body>
+</html>

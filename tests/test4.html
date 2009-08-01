@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../processing.js"></script>
+  <script src="../init.js"></script>
+<body>
+
+
+
+
+<script type="application/processing">
+
+	// key variables
+	boolean sat_rand = true; // should saturation be random?
+	boolean bri_rand = true; // should brightness be random?
+	boolean sat_prog = false; // should saturation progress thru loop?
+	boolean bri_prog = false; // should brightness progress thru loop?
+
+	int hue_range_start = 1;
+	int hue_range_end = 4;
+	int rotation_factor = 90;
+	
+	int rotation_limit = 1000;
+	
+	int loop_step_range_start = 10;
+	int loop_step_range_end = 10;
+	
+
+	cWidth = 700;
+	cHeight = 700;	
+	size(cWidth, cHeight);
+	colorMode(RGB,255,255,255,100);
+	smooth();
+	background(255);
+	//noStroke();
+	colorMode(HSB);
+	strokeWeight(0.1);
+	int h = int(random(0, 255));
+	int s = int(random(0, 180));
+	int b = int(random(250, 254));
+	int l = 0;
+	
+	for(int i = 0; i < rotation_limit; i = i + int(random((loop_step_range_start, loop_step_range_end)))) {
+
+		h = h + (int(random(hue_range_start, hue_range_end)));
+
+		if(sat_prog) {
+			s = s + (int(random(12,20)));
+		} else if (sat_rand) {
+			s = int(random(150, 200));
+		}
+		
+		if(bri_prog) {
+			b = b + (int(random(1,2)));
+		} else if(bri_rand) {
+			b = int(random(200, 254));
+		}
+
+		fill(h, s, b);
+		rotate(PI/rotation_factor);
+		rect(-100, -100, 2000, i);
+	}
+</script>
+
+<canvas width="200" height="200"></canvas>
+
+</body>
+</html>

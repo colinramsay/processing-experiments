@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="../processing.js"></script>
+  <script src="../init.js"></script>
+<body>
+
+<script type="application/processing">
+
+	cWidth = 700;
+	cHeight = 700;	
+	size(cWidth, cHeight);
+	frameRate(30);
+	colorMode(RGB,255,255,255,100);
+	smooth();
+	background(0);
+	noStroke();
+
+	int[][] lines = new int[3][4];
+
+	for(int i = 0; i < 3; i++) {
+		stroke(255);
+		lines[i][0] = 0 - random(0, 100);
+		lines[i][1] = 0;
+		lines[i][2] = cWidth;
+		lines[i][3] = cHeight;
+		line(lines[i][0], lines[i][1], lines[i][2], lines[i][3]);
+	}
+
+	for(int i = 0; i <= 10; i++) {
+		int x = int(random(0, cWidth))
+		int y = int(random(0, cHeight))
+		int h = int(random(4, cWidth / 10))
+		ellipse(x, y, h, h);
+	}
+	
+	for(int i = 0; i <= 10; i++) {
+		int x = int(random(0, cWidth))
+		int y = int(random(0, cHeight))
+		int h = int(random(4, cWidth / 40))
+		ellipse(x, y, h, h);
+	}
+	
+
+</script>
+
+<canvas width="200" height="200"></canvas>
+
+</body>
+</html>
